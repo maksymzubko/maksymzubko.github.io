@@ -2,6 +2,7 @@ import React from 'react';
 import {motion} from "framer-motion";
 import {styles} from "../styles.js";
 import {Computer} from "@components/canvas"
+import SectionWrapper from "../hoc/SectionWrapper.tsx";
 
 const Hero = () => {
     return (
@@ -41,4 +42,4 @@ const Hero = () => {
     );
 };
 
-export default Hero;
+export default SectionWrapper(Hero, "", true);
