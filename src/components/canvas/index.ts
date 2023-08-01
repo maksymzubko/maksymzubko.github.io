@@ -1,6 +1,5 @@
-import BallCanvas from "./Ball";
-import ComputerCanvas from "./ComputerCanvas";
+import Computer from "./Computer";
 import Earth from "./Earth";
 import Stars from "./Stars";
 
-export { BallCanvas, ComputerCanvas, Earth, Stars };
+export { Computer, Earth, Stars };

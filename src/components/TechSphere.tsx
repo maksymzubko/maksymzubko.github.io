@@ -7,24 +7,9 @@ const TechSphere = () => {
     const svgEl = useRef()
 
     useEffect(() => {
-        interface Entries {
-            label?: string,
-            url?: string,
-            target?: string,
-            tooltip?: string,
-            image?: any;
-            width?: string;
-            height?: string;
-        }
-
-        const entries: Entries[] = [
-
-        ];
-
-        technologies.forEach(t => {
-            entries.push({image: t.icon, width: '50', height: '50', tooltip: t.name})
+        const entries = technologies.map(t => {
+           return {image: t.icon, width: '50', height: '50', tooltip: t.name}
         })
-
 
         const settings = {
             entries: entries,
@@ -60,7 +45,7 @@ const TechSphere = () => {
             animatingRadiusLimit: 4
         };
         // @ts-ignore
-        const obj = SVG3DTagCloud(svgEl.current, settings)
+        SVG3DTagCloud(svgEl.current, settings)
         return () => {
             // @ts-ignore
             svgEl.current.innerHTML = "";

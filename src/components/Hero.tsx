@@ -1,7 +1,7 @@
 import React from 'react';
 import {motion} from "framer-motion";
 import {styles} from "../styles.js";
-import {ComputerCanvas} from "@components/canvas"
+import {Computer} from "@components/canvas"
 import {fadeIn, textVariant} from "../utils/motion.ts";
 
 const Hero = () => {
@@ -23,7 +23,7 @@ const Hero = () => {
                 </div>
             </div>
 
-            <ComputerCanvas/>
+            <Computer/>
 
             <div className={"absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center"}>
                 <a href={"#about"}>
