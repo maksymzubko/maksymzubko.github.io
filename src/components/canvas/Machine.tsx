@@ -3,10 +3,8 @@ import {Canvas} from "@react-three/fiber";
 import {Decal, OrbitControls, Preload, useGLTF, useTexture} from "@react-three/drei";
 import {BallCollider, Physics, RigidBody} from "@react-three/rapier";
 
-import {DoubleSide, MeshBasicMaterial, MeshStandardMaterial} from 'three'
 import CanvasLoader from "@components/Loader.tsx";
-import {Ball, Demo} from "@components/canvas/Ball.tsx";
-import {ITechnologies, technologies} from "@constants/index.ts";
+import {technologies} from "@constants/index.ts";
 
 const Machine = ({isMobile}: { isMobile: boolean; }) => {
     const computer = useGLTF('./green_tea_vending_machine/scene.gltf')
@@ -16,7 +14,7 @@ const Machine = ({isMobile}: { isMobile: boolean; }) => {
     console.log(texture)
     return (
         <mesh>
-            <meshStandardMaterial opacity={0} transparent={true} thickness={0} transmission={0} depthTest={true}/>
+            <meshStandardMaterial opacity={0} transparent={true} depthTest={true}/>
             <hemisphereLight intensity={0.15} groundColor={"black"}/>
             {/*<pointLight intensity={1}/>*/}
             {/*<spotLight position={[0, 0, 0]} angle={0.12} penumbra={1} intensity={1} castShadow={true} shadow-mapSize={1024}/>*/}
