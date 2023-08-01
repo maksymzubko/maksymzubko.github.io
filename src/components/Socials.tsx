@@ -18,7 +18,7 @@ const Socials = () => {
                 {socials.map((social, index) =>
                     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.7)}>
                         <Tilt
-                            key={`tilt-social-${index}`}
+                            key={`tilt-social-${social.name}`}
                             // @ts-ignore
                             options={{
                                 max: 45,
