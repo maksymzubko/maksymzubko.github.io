@@ -2,7 +2,6 @@ import React from 'react';
 import {motion} from "framer-motion";
 import {styles} from "../styles.js";
 import {Computer} from "@components/canvas"
-import {fadeIn, textVariant} from "../utils/motion.ts";
 
 const Hero = () => {
     return (
@@ -34,7 +33,6 @@ const Hero = () => {
                             transition={{ duration: 1.6, repeat: Infinity, repeatType: 'loop'}}
                             className={"w-3 h-3 rounded-full bg-secondary mb-1"}
                         >
-
                         </motion.div>
                     </div>
                 </a>
