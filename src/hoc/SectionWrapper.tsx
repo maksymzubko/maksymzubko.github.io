@@ -17,7 +17,7 @@ const StarWrapper = (Component, idName, needRenderId = false) =>
                 window.history.pushState({}, "", `#${idName}`)
         }}
       >
-        <span className='hash-span' id={idName}>
+        <span className={`${idName !== '' ? '!block' : '!hidden'} hash-span`} id={idName}>
           &nbsp;
         </span>
 

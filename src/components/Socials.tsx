@@ -3,8 +3,8 @@ import {motion} from "framer-motion";
 import {fadeIn, textVariant} from "../utils/motion.ts";
 import {styles} from "../styles.js";
 import SectionWrapper from "../hoc/SectionWrapper.tsx";
-import Tilt from "react-parallax-tilt";
 import {socials} from "@constants/index.ts";
+import CustomTilt from "@components/CustomTilt.tsx";
 
 const Socials = () => {
     return (
@@ -17,9 +17,8 @@ const Socials = () => {
             <div className={"w-full mt-20 flex flex-row flex-wrap gap-10 items-center justify-start"}>
                 {socials.map((social, index) =>
                     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.7)}>
-                        <Tilt
+                        <CustomTilt
                             key={`tilt-social-${social.name}`}
-                            // @ts-ignore
                             options={{
                                 max: 45,
                                 scale: 1,
@@ -28,7 +27,7 @@ const Socials = () => {
                             <div onClick={() => window.open(social.link, "_blank")}>
                                 <img src={social.icon} alt={social.name}/>
                             </div>
-                        </Tilt>
+                        </CustomTilt>
                     </motion.div>
 
                 )}
@@ -37,4 +36,4 @@ const Socials = () => {
     );
 };
 
-export default SectionWrapper(Socials, "");
+export default SectionWrapper(Socials, "socials");
