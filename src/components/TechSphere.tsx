@@ -2,6 +2,7 @@ import React, {Suspense, useEffect, useRef} from 'react';
 import {technologies} from "@constants/index.ts"
 import CanvasLoader from "@components/Loader.tsx";
 import {styles} from "../styles.js";
+import SectionWrapper from "../hoc/SectionWrapper.tsx";
 
 const TechSphere = () => {
     const svgEl = useRef()
@@ -54,12 +55,12 @@ const TechSphere = () => {
 
     return (
         <Suspense fallback={<CanvasLoader/>}>
-            <div className={"w-full relative items-center justify-center flex"}>
-                <div className={"z-10"} id={"tagcloud"} ref={svgEl}></div>
+            <div className={"w-full relative items-center justify-center flex md:h-auto h-[50vh]"}>
+                <div className={"z-10 pointer-events-none"} id={"tagcloud"} ref={svgEl}></div>
                 <h3 className={`${styles.sectionHeadText} z-0 text-white-100 absolute`}>Tech stack.</h3>
             </div>
         </Suspense>
     );
 };
 
-export default TechSphere;
+export default SectionWrapper(TechSphere, '');
