@@ -29,7 +29,6 @@ import logoNcenter from "./logo-no-center.png"
 import logoCenter from "./logo-center.png"
 
 import aestar from "./company/aestar.png"
-import freelance from "./company/freelance.ua.png"
 
 import toxic from "./toxic.png"
 import quickly from "./quicklysummary.png"
@@ -61,7 +60,6 @@ export {
     logoNcenter,
     logoCenter,
     aestar,
-    freelance,
     mui,
     postgres,
     php,
