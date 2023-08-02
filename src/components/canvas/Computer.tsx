@@ -5,6 +5,10 @@ import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
 import CanvasLoader from "@components/Loader.tsx";
 
 const Computer = ({isMobile}: { isMobile: boolean }) => {
+    useEffect(() => {
+        const event = new CustomEvent("computer", {detail: {name: "computer"}})
+        document.dispatchEvent(event);
+    }, [])
     const computer = useGLTF(`./pc_${isMobile ? 'mobile' : 'desktop'}/scene.gltf`)
     return (
         <mesh>

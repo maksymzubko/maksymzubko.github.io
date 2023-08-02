@@ -16,9 +16,8 @@ const Socials = () => {
 
             <div className={"w-full mt-20 flex flex-row flex-wrap gap-10 items-center justify-start"}>
                 {socials.map((social, index) =>
-                    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.7)}>
+                    <motion.div key={`tilt-social-${social.name}`} variants={fadeIn("up", "spring", index * 0.5, 0.7)}>
                         <CustomTilt
-                            key={`tilt-social-${social.name}`}
                             options={{
                                 max: 45,
                                 scale: 1,

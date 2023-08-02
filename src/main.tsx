@@ -8,8 +8,6 @@ const AppComponent = lazy(() => import('./App.tsx'));
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
-        <Suspense fallback={<PageLoader/>}>
-            <AppComponent/>
-        </Suspense>
+        <AppComponent/>
     </BrowserRouter>
 )
