@@ -8,6 +8,8 @@ import Works from "@components/Works.tsx";
 import Contact from "@components/Contact.tsx";
 import StarsCanvas from "@components/canvas/Stars.tsx";
 import Socials from "@components/Socials.tsx";
+import {Suspense} from "react";
+import PageLoader from "@components/PageLoader.tsx";
 
 function App() {
     return (
@@ -22,8 +24,8 @@ function App() {
             <Works/>
             <Socials/>
             <div className={"z-0"}>
-                <Contact />
-                <StarsCanvas />
+                <Contact/>
+                <StarsCanvas/>
             </div>
         </div>
     )
