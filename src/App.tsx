@@ -8,6 +8,7 @@ import Works from "@components/Works.tsx";
 import Contact from "@components/Contact.tsx";
 import StarsCanvas from "@components/canvas/Stars.tsx";
 import Socials from "@components/Socials.tsx";
+import VerticalScroll from "@components/VerticalScroll.tsx";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                 <Contact />
                 <StarsCanvas />
             </div>
+            <VerticalScroll/>
         </div>
     )
 }

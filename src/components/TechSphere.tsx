@@ -2,6 +2,7 @@ import React, {Suspense, useEffect, useRef} from 'react';
 import {technologies} from "@constants/index.ts"
 import CanvasLoader from "@components/Loader.tsx";
 import {styles} from "../styles.js";
+import SectionWrapper from "../hoc/SectionWrapper.tsx";
 
 const TechSphere = () => {
     const svgEl = useRef()
@@ -62,4 +63,4 @@ const TechSphere = () => {
     );
 };
 
-export default TechSphere;
+export default SectionWrapper(TechSphere, "tech");
