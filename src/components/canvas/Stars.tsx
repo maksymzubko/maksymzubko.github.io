@@ -7,6 +7,11 @@ const Stars = (props) => {
   const ref = useRef();
   const [sphere] = useState(() => random.inSphere(new Float32Array(props.isMobile ? 600 : 2000), { radius: 1.2 }));
 
+  useEffect(() => {
+    const event = new CustomEvent("stars", {detail: {name: "stars"}})
+    document.dispatchEvent(event);
+  }, [])
+
   useFrame((state, delta) => {
     // @ts-ignore
     ref.current.rotation.x -= delta / 10;

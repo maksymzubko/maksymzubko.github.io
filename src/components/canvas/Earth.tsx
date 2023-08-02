@@ -5,6 +5,11 @@ import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
 import CanvasLoader from "../Loader";
 
 const Earth = ({isMobile}) => {
+    useEffect(() => {
+        const event = new CustomEvent("earth", {detail: {name: "earth"}})
+        document.dispatchEvent(event);
+    }, [])
+
     const earth = useGLTF(`./planet_${isMobile ? 'mobile' : 'pc'}/scene.gltf`);
 
     return (
@@ -45,7 +50,7 @@ const EarthCanvas = () => {
             }}
             className={"!touch-auto"}
         >
-            <Suspense fallback={<CanvasLoader/>}>
+            {/*<Suspense fallback={<CanvasLoader/>}>*/}
                 <OrbitControls
                     autoRotate
                     enableZoom={false}
@@ -56,7 +61,7 @@ const EarthCanvas = () => {
                 <Earth isMobile={isMobile}/>
 
                 <Preload all/>
-            </Suspense>
+            {/*</Suspense>*/}
         </Canvas>
     );
 };
