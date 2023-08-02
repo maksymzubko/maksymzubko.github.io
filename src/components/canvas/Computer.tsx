@@ -43,12 +43,15 @@ const ComputerCanvas = () => {
             shadows={true}
             camera={{position: [7, 5, 0], fov: 25}}
             gl={{preserveDrawingBuffer: true}}
+            className={"!touch-auto"}
         >
             <Suspense fallback={<CanvasLoader/>}>
                 <OrbitControls
                     enableZoom={false}
                     maxPolarAngle={Math.PI / 2}
-                    minPolarAngle={Math.PI / 2}/>
+                    minPolarAngle={Math.PI / 2}
+                    enableRotate={!isMobile}
+                />
                 <Computer isMobile={isMobile}/>
             </Suspense>
 
