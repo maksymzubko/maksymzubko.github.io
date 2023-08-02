@@ -1,8 +1,8 @@
 import React from 'react';
 import {motion} from "framer-motion";
 import {styles} from "../styles.js";
-import {ComputerCanvas} from "@components/canvas"
-import {fadeIn, textVariant} from "../utils/motion.ts";
+import {Computer} from "@components/canvas"
+import SectionWrapper from "../hoc/SectionWrapper.tsx";
 
 const Hero = () => {
     return (
@@ -23,7 +23,7 @@ const Hero = () => {
                 </div>
             </div>
 
-            <ComputerCanvas/>
+            <Computer/>
 
             <div className={"absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center"}>
                 <a href={"#about"}>
@@ -34,7 +34,6 @@ const Hero = () => {
                             transition={{ duration: 1.6, repeat: Infinity, repeatType: 'loop'}}
                             className={"w-3 h-3 rounded-full bg-secondary mb-1"}
                         >
-
                         </motion.div>
                     </div>
                 </a>
@@ -43,4 +42,4 @@ const Hero = () => {
     );
 };
 
-export default Hero;
+export default SectionWrapper(Hero, "", true);
