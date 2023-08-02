@@ -170,7 +170,7 @@ const Contact = () => {
 
             <motion.div
                 variants={slideIn("right", "tween", 0.2, 1)}
-                className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px] h-max-[calc(screen-200px)]'
+                className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px] w-auto xl:w-1/2 h-max-[calc(screen-200px)]'
             >
                 <Earth/>
             </motion.div>
