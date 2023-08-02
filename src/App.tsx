@@ -25,7 +25,7 @@ function App() {
         if (!loadingFonts && !loadingEvents) {
             document.getElementById("style-init").remove()
             setTimeout(()=>{
-                document.body.style = null;
+                document.body.setAttribute('style', null);
             }, 5000)
         }
     }, [loadingFonts, loadingEvents])
