@@ -6,6 +6,7 @@ import {Earth} from "./canvas";
 import {SectionWrapper} from "../hoc";
 import {slideIn} from "../utils/motion";
 import axios from "axios";
+import Modal from "@components/Modal.tsx";
 
 const Contact = () => {
     const formRef = useRef<HTMLFormElement>();
@@ -80,26 +81,7 @@ const Contact = () => {
         <div
             className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
         >
-            <motion.div animate={{
-                opacity: modalOpen ? 1 : 0,
-                zIndex: modalOpen ? 20 : -1,
-                transition: {duration: 0.25, delay: modalOpen ? 0 : 0.25}
-            }}
-                        initial={{opacity: 0, zIndex: -1}}
-                        className={`fixed z-20 h-screen w-screen bg-[#00000080] left-0 bottom-0 flex items-center justify-center overflow-hidden`}>
-                <motion.div initial={{scale: 0}} animate={{scale: modalOpen ? 1 : 0}}
-                            transition={{duration: 0.25, delay: modalOpen ? 0.25 : 0}}
-                            className={"flex flex-col z-10 bg-black-100 p-8 rounded-2xl absolute md:min-w-[240px] sm:w-auto w-[90%] min-w-[120px] gap-10 min-h-[200px]"}>
-                    <h3 className={`${styles.sectionHeadText}`}>{result.error ? "Oops.." : "Thanks."}</h3>
-                    <p className={`${styles.sectionSubText}`}>{result.error ?? "Thank you. I will get back to you as soon as possible."}</p>
-                    <button
-                        className='self-center bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'
-                        onClick={hideModal}
-                    >
-                        Close
-                    </button>
-                </motion.div>
-            </motion.div>
+            <Modal modalOpen={modalOpen} onClick={hideModal} result={result}/>
             <motion.div
                 variants={slideIn("left", "tween", 0.7, 1)}
                 className='flex-[0.75] bg-black-100 p-8 rounded-2xl'

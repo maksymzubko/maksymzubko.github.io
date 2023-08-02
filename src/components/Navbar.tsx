@@ -6,9 +6,21 @@ import {styles} from '../styles.js'
 import {navLinks} from "@constants/index.ts";
 import {logoNcenter, logoCenter} from '@assets/index.ts'
 
+import {useOutsideAlerter} from '../hooks'
+
 const Navbar = () => {
     const [active, setActive] = useState("")
     const [toggle, setToggle] = useState(false)
+    const ref = useRef()
+
+    function onClickOutside() {
+        if(toggle)
+        {
+            setToggle(false)
+        }
+    }
+
+    useOutsideAlerter(ref, onClickOutside)
 
     return (
         <nav
@@ -54,6 +66,8 @@ const Navbar = () => {
                     </div>
 
                     <motion.div
+                        ref={ref}
+                        initial={{translateX: 200, opacity: 0}}
                         animate={{translateX: !toggle ? 200 : 0, opacity: !toggle ? 0 : 1}}
                         className={`p-6 blue-gradient top-20 right-0 mx-4 my-2 min-w-[140px] absolute z-10 rounded-xl`}>
                         <ul className={"list-none flex justify-end items-start flex-col gap-4"}>
