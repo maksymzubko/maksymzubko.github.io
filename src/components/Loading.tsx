@@ -1,7 +1,18 @@
 import {motion, usePresence} from "framer-motion";
+import {useEffect} from "react";
 
 export const Loading = (props) => {
     const [isPresent, safeToRemove] = usePresence()
+
+    useEffect(() => {
+        if(!isPresent)
+        {
+            setTimeout(()=>{
+                safeToRemove()
+            }, 10000)
+        }
+    }, [isPresent, safeToRemove])
+
     return (
         <div className={"w-fit h-fit translate-x-[-50%] translate-y-[-50%] absolute top-[50%] left-[50%] flex items-center justify-center flex-col sm:gap-[60px]"}>
             <motion.svg
@@ -14,7 +25,7 @@ export const Loading = (props) => {
                             ease: "easeInOut",
                         }
                     } : {}} version="1.1"
-                className={"w-full relative rotate-[45deg]"}
+                className={"w-full sm:max-w-full max-w-[254px] relative rotate-[45deg]"}
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="360px" height="360px"
                 viewBox="0 0 360 360" enableBackground="new 0 0 360 360" xmlSpace="preserve">
