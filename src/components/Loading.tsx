@@ -3,18 +3,18 @@ import {motion, usePresence} from "framer-motion";
 export const Loading = (props) => {
     const [isPresent, safeToRemove] = usePresence()
     return (
-        <>
+        <div className={"w-fit h-fit translate-x-[-50%] translate-y-[-50%] absolute top-[50%] left-[50%] flex items-center justify-center flex-col sm:gap-[60px]"}>
             <motion.svg
-                initial={{top: "50%", left: "50%"}}
+                animate={{rotate: ["45deg", "50deg", "40deg", "45deg"], transition:{repeat: Infinity, duration: 2.5, ease: 'easeInOut', repeatType: 'reverse'}}}
                 exit={props.animateEnd ?
                     {
-                        top: "-100%",
+                        translateY: "-1500px",
                         transition: {
                             duration: 10,
                             ease: "easeInOut",
                         }
                     } : {}} version="1.1"
-                className={"absolute scale-50 sm:scale-100 translate-x-[-50%] translate-y-[-50%] rotate-[45deg]"}
+                className={"w-full relative rotate-[45deg]"}
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="360px" height="360px"
                 viewBox="0 0 360 360" enableBackground="new 0 0 360 360" xmlSpace="preserve">
@@ -101,9 +101,9 @@ export const Loading = (props) => {
                     props.animateEnd && !isPresent ?
                         {duration: 2} : {duration: 3, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut'}
                 }
-                className={"translate-x-[-50%] translate-y-[-50%] absolute sm:top-[80%] top-[65%] sm:text-[32px] text-[24px] left-[50%]"}>
+                className={"sm:text-[32px] text-[24px]"}>
                 {props.animateEnd && !isPresent ? 'Loaded' : 'Loading...'}
             </motion.span>
-        </>
+        </div>
     );
 };
