@@ -15,7 +15,7 @@ import {useEffect} from "react";
 import {useWaitEvents} from "./hooks/useWaitEvents.ts";
 
 function App() {
-    const loadingFonts = useWaitFonts([
+    const loadingFonts = useWaitFonts(window.innerWidth < 768 ? [] : [
         '"Poppins"'
     ])
 
