@@ -14,36 +14,39 @@ import {Loading} from './components/Loading.tsx'
 import {useEffect} from "react";
 import {useWaitEvents} from "./hooks/useWaitEvents.ts";
 
+const isMobile = () => {
+    return /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+}
+
 function App() {
-    const loadingFonts = useWaitFonts(window.innerWidth < 768 ? [] : [
+    const loadingFonts = useWaitFonts(isMobile() ? [] : [
         '"Poppins"'
     ])
 
-    const loadingEvents = useWaitEvents(['computer', 'earth', 'stars'])
+    const loadingEvents = useWaitEvents(!isMobile() ? ['computer', 'earth', 'stars'] : ['earth'])
 
     useEffect(() => {
         if (!loadingFonts && !loadingEvents) {
             document.getElementById("style-init").remove()
-            setTimeout(()=>{
-                document.body.setAttribute('style', null);
-            }, 5000)
+            setTimeout(() => {
+                document.body.setAttribute('style', "");
+                document.documentElement.setAttribute('style', "");
+            }, 3000)
         }
     }, [loadingFonts, loadingEvents])
 
-    if(loadingFonts)
-    {
+    if (loadingFonts) {
         return <Loading/>
     }
 
     return (
         <>
             <AnimatePresence>
-                {loadingEvents && <Loading animateEnd={true}/>}
+                {loadingEvents && <Loading/>}
             </AnimatePresence>
 
             <motion.div initial={{opacity: 0}}
-                        animate={{opacity: loadingEvents ? 0 : 1}}
-                        transition={{duration: 1, delay: 5}}
+                        animate={{opacity: loadingEvents ? 0 : 1}} transition={{duration: 1, delay: 3}}
                         className={"relative z-0 bg-primary select-none"}>
                 <div className={"bg-hero-pattern bg-cover bg-no-repeat bg-center"}>
                     <Navbar/>

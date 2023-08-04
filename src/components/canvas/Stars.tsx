@@ -38,7 +38,7 @@ const StarsCanvas = () => {
   const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 700px)');
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
 
     setIsMobile(mediaQuery.matches);
 
@@ -52,6 +52,11 @@ const StarsCanvas = () => {
       mediaQuery.removeEventListener('change', handleMediaQueryChange);
     }
   }, [])
+
+  if(isMobile)
+  {
+    return <></>
+  }
 
   return (
     <div className='w-full h-full absolute inset-0 z-[-1]'>

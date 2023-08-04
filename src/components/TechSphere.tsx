@@ -1,8 +1,9 @@
 import React, {Suspense, useEffect, useRef} from 'react';
 import {technologies} from "@constants/index.ts"
-import CanvasLoader from "@components/Loader.tsx";
 import {styles} from "../styles.js";
 import SectionWrapper from "../hoc/SectionWrapper.tsx";
+import {fadeIn} from "../utils/motion.ts";
+import {motion} from "framer-motion";
 
 const TechSphere = () => {
     const svgEl = useRef()
@@ -54,13 +55,11 @@ const TechSphere = () => {
     }, [])
 
     return (
-        <Suspense fallback={<CanvasLoader/>}>
-            <div className={"w-full relative items-center justify-center flex md:h-auto h-[50vh]"}>
+            <motion.div variants={fadeIn("up", "",0.1, 0.7)} className={"w-full relative items-center justify-center flex md:h-auto h-[30vh]"}>
                 <div className={"z-10 pointer-events-none"} id={"tagcloud"} ref={svgEl}></div>
                 <h3 className={`${styles.sectionHeadText} z-0 text-white-100 absolute`}>Tech stack.</h3>
-            </div>
-        </Suspense>
+            </motion.div>
     );
 };
 
-export default SectionWrapper(TechSphere, '');
+export default SectionWrapper(TechSphere, 'tech');
