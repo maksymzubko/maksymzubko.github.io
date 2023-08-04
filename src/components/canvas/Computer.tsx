@@ -1,9 +1,10 @@
-import React, {Suspense, useEffect, useState} from 'react';
+import React, {Suspense, useContext, useEffect, useState} from 'react';
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
 
 import CanvasLoader from "@components/Loader.tsx";
 import {computer} from "@assets/index.ts";
+import {GlobalContext} from "../../contexts/GlobalContext.ts";
 
 const Computer = ({isMobile}: { isMobile: boolean }) => {
     useEffect(() => {
@@ -24,24 +25,7 @@ const Computer = ({isMobile}: { isMobile: boolean }) => {
 };
 
 const ComputerCanvas = () => {
-    const [isMobile, setIsMobile] = useState(false)
-
-    useEffect(() => {
-        const mediaQuery = window.matchMedia('(max-width: 768px)');
-        setIsMobile(mediaQuery.matches);
-
-        const handleMediaQueryChange = (event: MediaQueryListEvent) => {
-
-            setIsMobile(event.matches);
-        }
-
-        mediaQuery.addEventListener('change', handleMediaQueryChange);
-
-        return () => {
-            mediaQuery.removeEventListener('change', handleMediaQueryChange);
-        }
-    }, [])
-
+    const isMobile = useContext(GlobalContext).isMobile;
     if(isMobile)
     {
         return <img src={computer} alt={"computer"} className={"absolute top-[350px] w-full"}/>
