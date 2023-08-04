@@ -5,7 +5,7 @@ import * as random from "maath/random";
 
 const Stars = (props) => {
   const ref = useRef();
-  const [sphere] = useState(() => random.inSphere(new Float32Array(props.isMobile ? 600 : 2000), { radius: 1.2 }));
+  const [sphere] = useState(() => random.inSphere(new Float32Array(2000), { radius: 1.2 }));
 
   useEffect(() => {
     const event = new CustomEvent("stars", {detail: {name: "stars"}})
@@ -35,34 +35,11 @@ const Stars = (props) => {
 };
 
 const StarsCanvas = () => {
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
-
-    setIsMobile(mediaQuery.matches);
-
-    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
-      setIsMobile(event.matches);
-    }
-
-    mediaQuery.addEventListener('change', handleMediaQueryChange);
-
-    return () => {
-      mediaQuery.removeEventListener('change', handleMediaQueryChange);
-    }
-  }, [])
-
-  if(isMobile)
-  {
-    return <></>
-  }
-
   return (
     <div className='w-full h-full absolute inset-0 z-[-1]'>
       <Canvas camera={{ position: [0, 0, 1] }}>
         <Suspense fallback={null}>
-          <Stars isMobile={isMobile}/>
+          <Stars/>
         </Suspense>
 
         <Preload all />

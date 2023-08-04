@@ -1,4 +1,4 @@
-import {useRef, useState} from 'react';
+import {useContext, useRef, useState} from 'react';
 import {Link} from 'react-router-dom';
 
 import {motion} from "framer-motion";
@@ -7,9 +7,10 @@ import {navLinks} from "@constants/index.ts";
 import {logoNcenter, logoCenter} from '@assets/index.ts'
 
 import {useOutsideAlerter} from '../hooks'
+import {GlobalContext} from "../contexts/GlobalContext.ts";
 
 const Navbar = () => {
-    const [active, setActive] = useState("")
+    const currentHash = useContext(GlobalContext).currentHash;
     const [toggle, setToggle] = useState(false)
     const ref = useRef()
 
@@ -32,7 +33,6 @@ const Navbar = () => {
             <div className={"w-full flex justify-between items-center max-w-8xl mx-auto"}>
                 <Link to={import.meta.env.VITE_HOME}
                       className={"flex items-center gap-2"} onClick={() => {
-                    setActive("");
                     window.scrollTo(0, 0);
                 }}>
                     <div className={"w-12 h-12 relative invert"}>
@@ -46,8 +46,7 @@ const Navbar = () => {
                 <ul className={"list-none hidden md:flex flex-row gap-10"}>
                     {navLinks.map((link) =>
                         <li key={link.id}
-                            className={`${active === link.title ? "text-white" : "text-secondary"} hover: text-white text-[18px] font-medium cursor-pointer`}
-                            onClick={() => setActive(link.title)}>
+                            className={`${currentHash === link.id ? "text-white-100" : "text-[#999]"} hover: text-white text-[18px] font-medium cursor-pointer`}>
                             <a href={`#${link.id}`}>{link.title}</a>
                         </li>
                     )}
@@ -76,9 +75,8 @@ const Navbar = () => {
                         <ul className={"list-none flex justify-end items-start flex-col gap-4"}>
                             {navLinks.map((link) =>
                                 <li key={link.id}
-                                    className={`${active === link.title ? "text-white" : "text-secondary"} font-poppins text-[16px] font-medium cursor-pointer`}
+                                    className={`${currentHash === link.id ? "text-white" : "text-secondary"} font-poppins text-[16px] font-medium cursor-pointer`}
                                     onClick={() => {
-                                        setActive(link.title);
                                         setToggle(false)
                                     }}>
                                     <a href={`#${link.id}`}>{link.title}</a>
