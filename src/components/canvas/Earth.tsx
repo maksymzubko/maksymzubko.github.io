@@ -1,7 +1,7 @@
 import React, {Suspense, useContext, useEffect, useState} from "react";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
-import CanvasLoader from "../Loader";
+import CanvasLoader from "../CanvasLoader.tsx";
 import {GlobalContext} from "../../contexts/GlobalContext.ts";
 
 const Earth = ({isMobile}) => {

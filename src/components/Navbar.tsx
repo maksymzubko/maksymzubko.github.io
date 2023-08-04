@@ -46,7 +46,7 @@ const Navbar = () => {
                 <ul className={"list-none hidden md:flex flex-row gap-10"}>
                     {navLinks.map((link) =>
                         <li key={link.id}
-                            className={`${currentHash === link.id ? "text-white-100" : "text-[#999]"} hover: text-white text-[18px] font-medium cursor-pointer`}>
+                            className={`${currentHash === link.id ? "text-white-100" : "text-[#999]"} hover:text-white text-[18px] font-medium cursor-pointer`}>
                             <a href={`#${link.id}`}>{link.title}</a>
                         </li>
                     )}
