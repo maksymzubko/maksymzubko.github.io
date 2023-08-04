@@ -3,13 +3,14 @@ import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
 
 import CanvasLoader from "@components/Loader.tsx";
+import {computer} from "@assets/index.ts";
 
 const Computer = ({isMobile}: { isMobile: boolean }) => {
     useEffect(() => {
         const event = new CustomEvent("computer", {detail: {name: "computer"}})
         document.dispatchEvent(event);
     }, [])
-    const computer = useGLTF(`./pc_${isMobile ? 'mobile' : 'desktop'}/scene.gltf`)
+    const computer = useGLTF(`./pc_desktop/scene.gltf`)
     return (
         <mesh>
             <hemisphereLight intensity={0.15} groundColor={"black"}/>
@@ -26,11 +27,11 @@ const ComputerCanvas = () => {
     const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {
-        const mediaQuery = window.matchMedia('(max-width: 700px)');
-
+        const mediaQuery = window.matchMedia('(max-width: 768px)');
         setIsMobile(mediaQuery.matches);
 
         const handleMediaQueryChange = (event: MediaQueryListEvent) => {
+
             setIsMobile(event.matches);
         }
 
@@ -40,6 +41,11 @@ const ComputerCanvas = () => {
             mediaQuery.removeEventListener('change', handleMediaQueryChange);
         }
     }, [])
+
+    if(isMobile)
+    {
+        return <img src={computer} alt={"computer"} className={"absolute top-[350px] w-full"}/>
+    }
 
     return (
         <Canvas
