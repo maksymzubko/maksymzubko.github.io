@@ -11,19 +11,42 @@ import StarsCanvas from "@components/canvas/Stars.tsx";
 import Socials from "@components/Socials.tsx";
 import {useWaitFonts} from "./hooks/useWaitFonts.ts";
 import {Loading} from './components/Loading.tsx'
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useWaitEvents} from "./hooks/useWaitEvents.ts";
+import {GlobalContext} from "./contexts/GlobalContext.ts";
 
-const isMobile = () => {
+function isMobile() {
     return /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
 }
 
 function App() {
-    const loadingFonts = useWaitFonts(isMobile() ? [] : [
-        '"Poppins"'
-    ])
+    const [isMobileState, setIsMobile] = useState(isMobile())
+    const [currentHash, setCurrentHash] = useState("")
+
+    const loadingFonts = useWaitFonts(isMobile() ? [] : ['"Poppins"'])
 
     const loadingEvents = useWaitEvents(!isMobile() ? ['computer', 'earth', 'stars'] : ['earth'])
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(max-width: 768px)');
+        setIsMobile(mediaQuery.matches);
+
+        const handleMediaQueryChange = (event: MediaQueryListEvent) => {
+            setIsMobile(event.matches);
+        }
+
+        const handlePopChange = () => {
+            setCurrentHash(window.location.hash.replace("#", ""))
+        }
+
+        window.addEventListener('history', handlePopChange);
+        mediaQuery.addEventListener('change', handleMediaQueryChange);
+
+        return () => {
+            window.removeEventListener('history', handlePopChange);
+            mediaQuery.removeEventListener('change', handleMediaQueryChange);
+        }
+    }, [])
 
     useEffect(() => {
         if (!loadingFonts && !loadingEvents) {
@@ -40,7 +63,7 @@ function App() {
     }
 
     return (
-        <>
+        <GlobalContext.Provider value={{isMobile: isMobileState, currentHash: currentHash}}>
             <AnimatePresence>
                 {loadingEvents && <Loading/>}
             </AnimatePresence>
@@ -58,11 +81,11 @@ function App() {
                 <Works/>
                 <Socials/>
                 <div className={"z-0"}>
-                    <Contact/>
-                    <StarsCanvas/>
+                    <Contact isMobile={isMobileState}/>
+                    {!isMobileState && <StarsCanvas/>}
                 </div>
             </motion.div>
-        </>
+        </GlobalContext.Provider>
     )
 }
 

@@ -1,7 +1,8 @@
-import React, {Suspense, useEffect, useState} from "react";
+import React, {Suspense, useContext, useEffect, useState} from "react";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
 import CanvasLoader from "../Loader";
+import {GlobalContext} from "../../contexts/GlobalContext.ts";
 
 const Earth = ({isMobile}) => {
     useEffect(() => {
@@ -17,24 +18,7 @@ const Earth = ({isMobile}) => {
 };
 
 const EarthCanvas = () => {
-    const [isMobile, setIsMobile] = useState(false)
-
-    useEffect(() => {
-        const mediaQuery = window.matchMedia('(max-width: 768px)');
-
-        setIsMobile(mediaQuery.matches);
-
-        const handleMediaQueryChange = (event: MediaQueryListEvent) => {
-            setIsMobile(event.matches);
-        }
-
-        mediaQuery.addEventListener('change', handleMediaQueryChange);
-
-        return () => {
-            mediaQuery.removeEventListener('change', handleMediaQueryChange);
-        }
-    }, [])
-
+    const isMobile = useContext(GlobalContext).isMobile;
     return (
         <Canvas
             shadows
