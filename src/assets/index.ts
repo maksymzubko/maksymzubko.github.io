@@ -4,6 +4,8 @@ import mobile from "./mobile.png";
 import web from "./web.png";
 import github from "./github.png";
 
+import computer from "./3dmodels_img/computer.png"
+
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
 import figma from "./tech/figma.png";
@@ -65,5 +67,6 @@ export {
     php,
     nestjs,
     quickly,
-    toxic
+    toxic,
+    computer
 };

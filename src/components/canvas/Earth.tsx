@@ -1,7 +1,7 @@
 import React, {Suspense, useEffect, useState} from "react";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
-
+import earth from "../../assets/3dmodels_img/earth.gif"
 import CanvasLoader from "../Loader";
 
 const Earth = ({isMobile}) => {
@@ -35,6 +35,12 @@ const EarthCanvas = () => {
             mediaQuery.removeEventListener('change', handleMediaQueryChange);
         }
     }, [])
+
+    if(isMobile)
+    {
+        return  <></>
+        // return <img src={earth} alt={"earth"}/>
+    }
 
     return (
         <Canvas

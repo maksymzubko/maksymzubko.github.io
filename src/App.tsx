@@ -13,37 +13,40 @@ import {useWaitFonts} from "./hooks/useWaitFonts.ts";
 import {Loading} from './components/Loading.tsx'
 import {useEffect} from "react";
 import {useWaitEvents} from "./hooks/useWaitEvents.ts";
+import ComputerCanvas from "@components/canvas/Computer.tsx";
 
 function App() {
     const loadingFonts = useWaitFonts(window.innerWidth < 768 ? [] : [
         '"Poppins"'
     ])
 
-    const loadingEvents = useWaitEvents(['computer', 'earth', 'stars'])
+    // const loadingEvents = useWaitEvents(['computer', 'earth', 'stars'])
+
+    const loadingEvents = false;
 
     useEffect(() => {
         if (!loadingFonts && !loadingEvents) {
             document.getElementById("style-init").remove()
             setTimeout(()=>{
                 document.body.setAttribute('style', null);
-            }, 5000)
+            }, 0)
         }
     }, [loadingFonts, loadingEvents])
 
-    if(loadingFonts)
-    {
-        return <Loading/>
-    }
-
+    // if(loadingFonts)
+    // {
+    //     return <Loading/>
+    // }
+    // initial={{opacity: 0}}
+    //                         animate={{opacity: loadingEvents ? 0 : 1}}
+    //                         transition={{duration: 1, delay: 5}}
     return (
         <>
-            <AnimatePresence>
-                {loadingEvents && <Loading animateEnd={true}/>}
-            </AnimatePresence>
+            {/*<AnimatePresence>*/}
+            {/*    {loadingEvents && <Loading animateEnd={true}/>}*/}
+            {/*</AnimatePresence>*/}
 
-            <motion.div initial={{opacity: 0}}
-                        animate={{opacity: loadingEvents ? 0 : 1}}
-                        transition={{duration: 1, delay: 5}}
+            <motion.div
                         className={"relative z-0 bg-primary select-none"}>
                 <div className={"bg-hero-pattern bg-cover bg-no-repeat bg-center"}>
                     <Navbar/>
@@ -56,7 +59,7 @@ function App() {
                 <Socials/>
                 <div className={"z-0"}>
                     <Contact/>
-                    <StarsCanvas/>
+                    {/*<StarsCanvas/>*/}
                 </div>
             </motion.div>
         </>

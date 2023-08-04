@@ -3,6 +3,7 @@ import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
 
 import CanvasLoader from "@components/Loader.tsx";
+import {computer} from "@assets/index.ts";
 
 const Computer = ({isMobile}: { isMobile: boolean }) => {
     useEffect(() => {
@@ -40,6 +41,11 @@ const ComputerCanvas = () => {
             mediaQuery.removeEventListener('change', handleMediaQueryChange);
         }
     }, [])
+
+    if(isMobile)
+    {
+        return <img src={computer} alt={"computer"} className={"absolute top-[350px] w-full"}/>
+    }
 
     return (
         <Canvas
