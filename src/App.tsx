@@ -10,7 +10,7 @@ import Contact from "@components/Contact.tsx";
 import StarsCanvas from "@components/canvas/Stars.tsx";
 import Socials from "@components/Socials.tsx";
 import {useWaitFonts} from "./hooks/useWaitFonts.ts";
-import {Loading} from './components/Loading.tsx'
+import {PageLoader} from '@components/PageLoader.tsx'
 import {useEffect, useState} from "react";
 import {useWaitEvents} from "./hooks/useWaitEvents.ts";
 import {GlobalContext} from "./contexts/GlobalContext.ts";
@@ -59,13 +59,13 @@ function App() {
     }, [loadingFonts, loadingEvents])
 
     if (loadingFonts) {
-        return <Loading/>
+        return <PageLoader/>
     }
 
     return (
         <GlobalContext.Provider value={{isMobile: isMobileState, currentHash: currentHash}}>
             <AnimatePresence>
-                {loadingEvents && <Loading/>}
+                {loadingEvents && <PageLoader/>}
             </AnimatePresence>
 
             <motion.div initial={{opacity: 0}}

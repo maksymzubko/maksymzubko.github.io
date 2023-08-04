@@ -2,7 +2,7 @@ import React, {Suspense, useContext, useEffect, useState} from 'react';
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
 
-import CanvasLoader from "@components/Loader.tsx";
+import CanvasLoader from "@components/CanvasLoader.tsx";
 import {computer} from "@assets/index.ts";
 import {GlobalContext} from "../../contexts/GlobalContext.ts";
 
