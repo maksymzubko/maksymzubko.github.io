@@ -13,40 +13,39 @@ import {useWaitFonts} from "./hooks/useWaitFonts.ts";
 import {Loading} from './components/Loading.tsx'
 import {useEffect} from "react";
 import {useWaitEvents} from "./hooks/useWaitEvents.ts";
-import ComputerCanvas from "@components/canvas/Computer.tsx";
+
+const isMobile = () => {
+    return /Android|webOS|iPhone|iPad|iPod|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+}
 
 function App() {
-    const loadingFonts = useWaitFonts(window.innerWidth < 768 ? [] : [
+    const loadingFonts = useWaitFonts(isMobile() ? [] : [
         '"Poppins"'
     ])
 
-    // const loadingEvents = useWaitEvents(['computer', 'earth', 'stars'])
-
-    const loadingEvents = false;
+    const loadingEvents = useWaitEvents( !isMobile() ? ['computer', 'earth', 'stars'] : ['earth'])
 
     useEffect(() => {
         if (!loadingFonts && !loadingEvents) {
             document.getElementById("style-init").remove()
-            setTimeout(()=>{
+            setTimeout(() => {
                 document.body.setAttribute('style', null);
-            }, 0)
+            }, 5000)
         }
     }, [loadingFonts, loadingEvents])
 
-    // if(loadingFonts)
-    // {
-    //     return <Loading/>
-    // }
-    // initial={{opacity: 0}}
-    //                         animate={{opacity: loadingEvents ? 0 : 1}}
-    //                         transition={{duration: 1, delay: 5}}
+    if (loadingFonts) {
+        return <Loading/>
+    }
+
     return (
         <>
-            {/*<AnimatePresence>*/}
-            {/*    {loadingEvents && <Loading animateEnd={true}/>}*/}
-            {/*</AnimatePresence>*/}
+            <AnimatePresence>
+                {loadingEvents && <Loading animateEnd={true}/>}
+            </AnimatePresence>
 
-            <motion.div
+            <motion.div initial={{opacity: 0}}
+                        animate={{opacity: loadingEvents ? 0 : 1}} transition={{duration: 1, delay: 5}}
                         className={"relative z-0 bg-primary select-none"}>
                 <div className={"bg-hero-pattern bg-cover bg-no-repeat bg-center"}>
                     <Navbar/>
@@ -59,7 +58,7 @@ function App() {
                 <Socials/>
                 <div className={"z-0"}>
                     <Contact/>
-                    {/*<StarsCanvas/>*/}
+                    <StarsCanvas/>
                 </div>
             </motion.div>
         </>

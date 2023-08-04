@@ -1,7 +1,6 @@
 import React, {Suspense, useEffect, useState} from "react";
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, Preload, useGLTF} from "@react-three/drei";
-import earth from "../../assets/3dmodels_img/earth.gif"
 import CanvasLoader from "../Loader";
 
 const Earth = ({isMobile}) => {
@@ -21,7 +20,7 @@ const EarthCanvas = () => {
     const [isMobile, setIsMobile] = useState(false)
 
     useEffect(() => {
-        const mediaQuery = window.matchMedia('(max-width: 700px)');
+        const mediaQuery = window.matchMedia('(max-width: 768px)');
 
         setIsMobile(mediaQuery.matches);
 
@@ -35,12 +34,6 @@ const EarthCanvas = () => {
             mediaQuery.removeEventListener('change', handleMediaQueryChange);
         }
     }, [])
-
-    if(isMobile)
-    {
-        return  <></>
-        // return <img src={earth} alt={"earth"}/>
-    }
 
     return (
         <Canvas
@@ -56,7 +49,7 @@ const EarthCanvas = () => {
             }}
             className={"!touch-auto"}
         >
-            {/*<Suspense fallback={<CanvasLoader/>}>*/}
+            <Suspense fallback={<CanvasLoader/>}>
                 <OrbitControls
                     autoRotate
                     enableZoom={false}
@@ -67,7 +60,7 @@ const EarthCanvas = () => {
                 <Earth isMobile={isMobile}/>
 
                 <Preload all/>
-            {/*</Suspense>*/}
+            </Suspense>
         </Canvas>
     );
 };
