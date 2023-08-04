@@ -13,11 +13,15 @@ const Navbar = () => {
     const [toggle, setToggle] = useState(false)
     const ref = useRef()
 
-    function onClickOutside() {
+    const onClickOutside = () => {
         if(toggle)
         {
             setToggle(false)
         }
+    }
+
+    const handleState = () => {
+        setToggle(!toggle)
     }
 
     useOutsideAlerter(ref, onClickOutside)
@@ -49,10 +53,10 @@ const Navbar = () => {
                     )}
                 </ul>
 
-                <div className={"md:hidden flex flex-1 justify-end items-center"}>
+                <div ref={ref} className={"md:hidden flex flex-1 justify-end items-center"}>
                     <div
                         className={"w-[24px] flex flex-col gap-[4px] cursor-pointer [&>*]:block [&>*]:w-full [&>*]:h-[3px] [&>*]:bg-[#cdcdcd] rounded-[3px] z-1 origin-[4px_0px]"}
-                        onClick={() => setToggle(!toggle)}>
+                        onClick={handleState}>
                         <motion.span animate={toggle ? {rotate: "45deg", translateX: "-1px", translateY: "-2px"} : {}}
                                      className={"origin-[0%_0%]"}></motion.span>
                         <motion.span animate={toggle ? {
@@ -66,7 +70,6 @@ const Navbar = () => {
                     </div>
 
                     <motion.div
-                        ref={ref}
                         initial={{translateX: 200, opacity: 0}}
                         animate={{translateX: !toggle ? 200 : 0, opacity: !toggle ? 0 : 1}}
                         className={`p-6 blue-gradient top-20 right-0 mx-4 my-2 min-w-[140px] absolute z-10 rounded-xl`}>
