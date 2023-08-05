@@ -23,7 +23,7 @@ function App() {
     const [isMobileState, setIsMobile] = useState(isMobile())
     const [currentHash, setCurrentHash] = useState("")
 
-    const loadingFonts = useWaitFonts(isMobile() ? [] : ['"Poppins"'])
+    const loadingFonts = useWaitFonts([])
 
     const loadingEvents = useWaitEvents(!isMobile() ? ['computer', 'earth', 'stars'] : ['earth'])
 
