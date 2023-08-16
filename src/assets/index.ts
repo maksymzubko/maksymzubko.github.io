@@ -33,6 +33,7 @@ import logoCenter from "./logo-center.png"
 import aestar from "./company/aestar.png"
 
 import toxic from "./toxic.png"
+import threadhub from "./threadhub.png"
 import quickly from "./quicklysummary.png"
 import shinchacku from "./shinchacku.png"
 
@@ -68,5 +69,6 @@ export {
     nestjs,
     quickly,
     toxic,
-    computer
+    computer,
+    threadhub
 };
