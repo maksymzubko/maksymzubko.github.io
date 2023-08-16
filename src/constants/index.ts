@@ -15,7 +15,7 @@ import {
     figma,
     docker,
     threejs,
-    aestar, nestjs, postgres, mui, php, quickly, toxic, shinchacku, telegram, github, upwork,
+    aestar, nestjs, postgres, mui, php, quickly, toxic, shinchacku, telegram, github, upwork, threadhub,
 } from "@assets/index.ts";
 
 export const navLinks: INavlinks[] = [
@@ -280,6 +280,44 @@ const projects: IProjects[] = [
         ],
         image: shinchacku,
         link: null,
+        source_code_link: null,
+    },
+    {
+        name: "ThreadHub",
+        description:
+            "ThreadHub - fullstack web application, tech demo and threads analog.",
+        tags: [
+            {
+                name: "react",
+                color: "blue-text-gradient",
+            },
+            {
+                name: "mongobb",
+                color: "green-text-gradient",
+            },
+            {
+                name: "next-router",
+                color: "pink-text-gradient",
+            },
+            {
+                name: "webhooks",
+                color: "green-text-gradient",
+            },
+            {
+                name: "next.js",
+                color: "blue-text-gradient",
+            },
+            {
+                name: "clerk",
+                color: "orange-text-gradient",
+            },
+            {
+                name: "tailwind",
+                color: "pink-text-gradient",
+            },
+        ],
+        link: "https://threads-analog.vercel.app/",
+        image: threadhub,
         source_code_link: null,
     },
 ];
