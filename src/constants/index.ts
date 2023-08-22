@@ -318,7 +318,7 @@ const projects: IProjects[] = [
         ],
         link: "https://threads-analog.vercel.app/",
         image: threadhub,
-        source_code_link: null,
+        source_code_link: "https://github.com/maksymzubko/threads-analog",
     },
 ];
 
