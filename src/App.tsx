@@ -25,7 +25,7 @@ function App() {
 
     const loadingFonts = useWaitFonts([])
 
-    const loadingEvents = useWaitEvents(!isMobile() ? ['computer', 'earth', 'stars'] : ['earth'])
+    const loadingEvents = useWaitEvents(!isMobile() ? ['computer', 'earth'] : ['earth'])
 
     useEffect(() => {
         const mediaQuery = window.matchMedia('(max-width: 768px)');
@@ -82,7 +82,6 @@ function App() {
                 <Socials/>
                 <div className={"z-0"}>
                     <Contact isMobile={isMobileState}/>
-                    {!isMobileState && <StarsCanvas/>}
                 </div>
             </motion.div>
         </GlobalContext.Provider>

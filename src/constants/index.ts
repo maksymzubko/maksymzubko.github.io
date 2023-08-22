@@ -214,7 +214,7 @@ const projects: IProjects[] = [
                 color: "pink-text-gradient",
             },
         ],
-        link: "https://stable.aestar.com.ua/game-toxic/",
+        link: "https://stable.aestar.com.ua/game-toxic/lobby",
         image: toxic,
         source_code_link: "https://github.com/s1maxx/game-toxic-thought-experiment",
     },
@@ -285,7 +285,7 @@ const projects: IProjects[] = [
     {
         name: "ThreadHub",
         description:
-            "ThreadHub - fullstack web application, tech demo and threads analog.",
+            "ThreadHub is a fullstack web application that serves as both a tech demo and a digital analog to traditional threads. It empowers users to create posts, engage through likes, views, and foster communities, showcasing the synergy of frontend and backend technologies in an environment that mirrors traditional threaded discussions.",
         tags: [
             {
                 name: "react",
