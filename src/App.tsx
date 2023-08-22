@@ -83,6 +83,12 @@ function App() {
                 <div className={"z-0"}>
                     <Contact isMobile={isMobileState}/>
                 </div>
+                <div className={"flex flex-col items-center justify-center gap-2 my-3"}>
+                    Found bug, issue or typo?
+                    <a className={"font-bold"} target={"_blank"} href={"https://github.com/maksymzubko/maksymzubko.github.io/issues"}>
+                        Please write here.
+                    </a>
+                </div>
             </motion.div>
         </GlobalContext.Provider>
     )
