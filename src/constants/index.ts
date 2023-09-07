@@ -151,7 +151,7 @@ const experiences: IExperiences[] = [
         company_name: "AEstAR",
         icon: aestar,
         iconBg: "#383E56",
-        date: "Jun 2022 - Present",
+        date: "Jun 2022 - Sep 2023",
         points: [
             "Developing and maintaining fullstack applications using React.js, Nest.js, Websockets and other related technologies.",
             "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
