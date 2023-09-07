@@ -214,7 +214,7 @@ const projects: IProjects[] = [
                 color: "pink-text-gradient",
             },
         ],
-        link: "https://stable.aestar.com.ua/game-toxic/lobby",
+        link: null,
         image: toxic,
         source_code_link: "https://github.com/s1maxx/game-toxic-thought-experiment",
     },
@@ -249,7 +249,7 @@ const projects: IProjects[] = [
             },
         ],
         image: quickly,
-        link: "https://stable.aestar.com.ua/quicklysummary",
+        link: null,
         source_code_link: "https://github.com/s1maxx/quicklysummary-react",
     },
     {
